@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "node ratings.js 8080",
+    "test": "jest"
+  },
+  "dependencies": {
+    "httpdispatcher": "1.0.0",
+    "mongodb": "^3.1.13",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "jest": "^29.4.1",
+    "jest-junit": "^15.0.0"
+  },
+  "private": true
+}
