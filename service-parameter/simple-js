@@ -1,0 +1,32 @@
+parameters:
+  general:
+    project: simple-js
+  cicd:
+    sourceCode:
+      url: https://github.com/unknopu/simple-js.git
+      branch: main
+    build:
+      sonarProject: simple-js
+      dependencyScanPath: ./
+      artifact:
+        nexusRepo: https://nexus.ks.net/repository/xxx/xxxv3
+        versionStrategy: gitTag
+      node:
+        npm:
+          commands:
+            - npm install
+        npmBuild:
+          commands:
+            - npm run install
+        outputPath: "./output"
+    deploy:
+      configMapFromFile:
+        url: https://dsdev.devops.alibabacloudcs.com/codeup/app_setting/dev.git
+        branch: main
+      ansible:
+        playbookSource:
+          url: https://gitlab.ks.net/ksn/retail/services/xxx-automate-deploy-onprem.git
+          branch: main
+        playbookPath: dsavingcard-service.yaml
+        inventory:
+          credentialFrom: secret-file
